@@ -131,10 +131,10 @@ else
                else
                   echo "doesn't exist!"
                   echo "Creating Subnet ---"
-                  az network vnet subnet create --name $subnet_name \
-                        -g $RG_NAME \
-                        --vnet-name $vnet \
-                        --address-prefix $address_prefix
+                     az network vnet subnet create --name $subnet_name \
+                           -g $RG_NAME \
+                           --vnet-name $vnet \
+                           --address-prefix $address_prefix
                   if [[ $(az network vnet subnet list -g $RG_NAME --vnet-name $vnet -o tsv --query "[?name=='$subnet_name']") ]]
                      then
                         echo "Completed!"
@@ -163,11 +163,11 @@ echo "$stuid"
 echo 
 echo "Query Router VNET ID ---"
 rtrid=$(az network vnet show -g $RG_NAME --name  $Router_vnet_name --query id --out tsv) 
-echo "$stuid"
+echo "$rtrid"
 echo 
 echo "Query Server VNET ID ---"
 srvid=$(az network vnet show -g $RG_NAME --name  $Server_vnet_name --query id --out tsv) 
-echo "$stuid"
+echo "$srvid"
 
 echo "Check if any of the NET IDs is NULL"
 if [ -z "$rtrid" -o -z "$srvid" -o -z $stuid ] ; then
@@ -186,25 +186,25 @@ read -r answer
       az network vnet peering create -g $RG_NAME \
             --name $Peer_RT \
             --vnet-name $Router_vnet_name \
-            --remote-vnet $stuid \
+            --remote-vnet $Student_vnet_name \
             --allow-vnet-access --allow-forwarded-traffic 
 
       az network vnet peering create -g $RG_NAME \
             --name $Peer_TR \
             --vnet-name $Student_vnet_name \
-            --remote-vnet $rtrid \
+            --remote-vnet $Router_vnet_name \
             --allow-vnet-access --allow-forwarded-traffic
 
       az network vnet peering create -g $RG_NAME \
             --name $Peer_RS \
             --vnet-name $Router_vnet_name \
-            --remote-vnet $srvid \
+            --remote-vnet $Server_vnet_name \
             --allow-vnet-access --allow-forwarded-traffic 
 
       az network vnet peering create -g $RG_NAME \
             --name $Peer_SR \
-            --vnet-name $Server_vnet_name \
-            --remote-vnet $rtrid \
+            --vnet-name $Server_vnet_name \  
+            --remote-vnet $Router_vnet_name \
             --allow-vnet-access --allow-forwarded-traffic
 
       echo "Netwrok Peerings created!"
