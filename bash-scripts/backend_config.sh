@@ -6,8 +6,8 @@ source ./network_config.sh
 # /////////////////////////////////////////////////////////////
 # ---------------------------------------------------
 # Windows VM Credentials
-USER_NAME=""
-ADMIN_PW=""
+USER_NAME="icmajam"
+ADMIN_PW="Password88!@#"
 
 # ---------------------------------------------------
 # sshkey pair names
