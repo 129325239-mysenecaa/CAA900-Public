@@ -19,7 +19,7 @@ if [[ $(az network nsg list -g $RG_NAME -o tsv --query "[?name=='$nsg_name']") ]
 then
     echo "exists!"
     echo "Deleteing NSG: $nsg_name"
-    az network nsg delete -g $RG_NAME --name $nsg_name --yes
+    az network nsg delete -g $RG_NAME --name $nsg_names
 fi
 done
 
