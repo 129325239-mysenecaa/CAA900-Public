@@ -7,7 +7,7 @@ echo "Loaded variabes without error"
 
 echo 
 echo "---------------------------------------------------"
-echo "Delting Visrtual Machines"
+echo "Deleting Vistual Machines"
 echo "---------------------------------------------------"
 echo
 for vm_name in "${vm_list[@]}"

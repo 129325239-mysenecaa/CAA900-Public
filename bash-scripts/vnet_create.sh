@@ -170,7 +170,7 @@ srvid=$(az network vnet show -g $RG_NAME --name  $Server_vnet_name --query id --
 echo "$stuid"
 
 echo "Check if any of the NET IDs is NULL"
-if [ -z "$rtrid" -o -z "$srvid" -o -z $stuid ] ; then
+if [ -z "$rtrid" -o -z "$srvid" -o -z "$stuid" ] ; then
         echo "One of the IDs: rtrid or srvid or stuid is null "
         echo "program will abort now!!"
         exit 2

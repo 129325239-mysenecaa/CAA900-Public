@@ -7,7 +7,7 @@ echo "Loaded variabes without error"
 
 echo 
 echo "---------------------------------------------------"
-echo "Delting Netwrok Interface Cards"
+echo "Deleting Network Interface Cards"
 echo "---------------------------------------------------"
 echo
 for nic_name in "${nic_list[@]}"
@@ -24,6 +24,6 @@ fi
 done
 
 
-echo "All Netwrok Interface Cards were deleted successfully!"
+echo "All Network Interface Cards were deleted successfully!"
 echo "NIC List"
 az network nic list -g $RG_NAME --out table
