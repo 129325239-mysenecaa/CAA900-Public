@@ -1,23 +1,19 @@
-# source logos
-source  ./logos.sh
-# variable declaration
-
 # //////////////////////////////////////////////////////////////
 # Update the lines that are specific to you
 # /////////////////////////////////////////////////////////////
-# ---------------------------------------------------
+
 # Client VM Credentials
 
-USER_NAME="atoosanasiri"
-ADMIN_PW="@atoosanasiri123"
+USER_NAME=""
+ADMIN_PW=""
 
-RG_NAME="Student-RG-1202761"     # your student group
-LOCATION="canadacentral"    # your location
-ID="99"          #unique ID assigned to you
+RG_NAME=""     # your student group
+LOCATION=""    # your location
+ID=""          #unique ID assigned to you
 
-Student_vnet_name="Student-1202761-vnet"
-Student_vnet_address="10.19.119.0/24"
-Client_Subnet_name="Virtual-Desktop-Client"
+Student_vnet_name=""
+Student_vnet_address=""
+Client_Subnet_name=""
 
 # ---------------------------------------------------
 # Networking - Virtual Networks
@@ -26,7 +22,7 @@ Client_vnet_name="$Student_vnet_name"
 Host_subnet_name="Host_Subnet"
 Client_subnet_name="$Client_Subnet_name"
 
-Host_vnet_address="172.25.$ID.0/24"
+Host_vnet_address="192.168.$ID.0/24"
 Host_subnet_address="$Host_vnet_address"
 Client_vnet_address="$Student_vnet_address"
 Client_subnet_address="$Student_vnet_address"

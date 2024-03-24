@@ -1,9 +1,3 @@
-source ./setup_config.sh
-echo -e "Loaded variabes without error"
-source ./network_create.sh
-echo -e "Loaded functions without error"
-
-
 function client_vm_create () {
 vm_name=$1
 image_name=$2
@@ -144,4 +138,3 @@ read -r answer
 if [[ "$answer" == "yes" ]];then
     destroy_networking_resources
 fi
-

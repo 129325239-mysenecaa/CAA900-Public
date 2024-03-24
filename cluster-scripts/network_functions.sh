@@ -1,5 +1,3 @@
-source ./setup_config.sh
-
 function vnet_create() {
 
 vnet_name=$1
@@ -216,9 +214,6 @@ nsg_create "$Host_NSG_name"
 
 nic_create "$Client_NIC_name" "$Client_vnet_name" "$Client_subnet_name" "$Client_NSG_name"
 nic_create "$Host_NIC_name" "$Host_vnet_name" "$Host_subnet_name" "$Host_NSG_name"
-nic_create "$Host1_NIC_name" "$Host_vnet_name" "$Host_subnet_name" "$Host_NSG_name"
-nic_create "$Host2_NIC_name" "$Host_vnet_name" "$Host_subnet_name" "$Host_NSG_name"
-nic_create "$Host3_NIC_name" "$Host_vnet_name" "$Host_subnet_name" "$Host_NSG_name"
 }
 
 function destroy_networking_resources()
