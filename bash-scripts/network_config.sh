@@ -1,6 +1,5 @@
 # Date: 2021-04-10
-# source logos
-source  ./logos.sh
+source  ./logo_csp451.sh
 # variable declaration
 
 # //////////////////////////////////////////////////////////////

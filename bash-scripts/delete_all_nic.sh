@@ -1,29 +1,25 @@
-echo "Loading variables:"
-echo "network_config.sh"
 source ./network_config.sh
-echo "backend_config.sh"
 source ./backend_config.sh
-echo "Loaded variabes without error"
+echo -e "Loaded variabes without error"
 
 echo 
-echo "---------------------------------------------------"
-echo "Deleting Network Interface Cards"
-echo "---------------------------------------------------"
+echo -e "---------------------------------------------------"
+echo -e "Deleting Network Interface Cards"
+echo -e "---------------------------------------------------"
 echo
 for nic_name in "${nic_list[@]}"
 do
-echo "---------------------------------------------------"
-echo "Check if exist: $nic_name"
-echo "---------------------------------------------------"
-if [[ $(az network nic list -g $RG_NAME -o tsv --query "[?name=='$nic_name']") ]]
-then
-    echo "exists!"
-    echo "Deleteing NIC: $nic_name"
+echo -e "NIC: $nic_name "
+echo -e "Check if it  exists ---"
+status="$(az network nic list -g $RG_NAME \
+        -o tsv --query "[?name=='$nic_name']"  2> /dev/null)"
+if [[ "$status" ]];then
+    echo
+    echo -e "exists!"
+    echo -e "Deleteing NIC: $nic_name"
     az network nic delete -g $RG_NAME --name $nic_name
+else
+    echo
+    echo -e "Doesn't exist! Nothing to do ...\n"    
 fi
 done
-
-
-echo "All Network Interface Cards were deleted successfully!"
-echo "NIC List"
-az network nic list -g $RG_NAME --out table

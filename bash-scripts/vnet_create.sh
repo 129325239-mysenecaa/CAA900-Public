@@ -20,7 +20,7 @@ else
    echo "doesn't exist!"
    echo "Do you want to create $vnet: $address_prefix? (yes/no)"
    read -r answer
-   if [[ "$answer" == "yes" ]]; then
+   if [[ "$answer" == "y" ]]; then
       echo "Creating VNET ---"
       az network vnet create -g $RG_NAME \
             --name $vnet \
@@ -38,7 +38,7 @@ else
       echo
       echo "Do you want to create subnets for $vnet: $address_prefix? (yes/no)"
       read -r answer
-      if [[ "$answer" == "yes" ]]; then
+      if [[ "$answer" == "y" ]]; then
          echo
          echo "Creating Subnets ---"
          for item in "${subnet_list[@]}"
@@ -94,7 +94,7 @@ else
    echo "doesn't exist!"
    echo "Do you want to create $vnet: $address_prefix? (yes/no)"
    read -r answer
-   if [[ "$answer" == "yes" ]]; then
+   if [[ "$answer" == "y" ]]; then
       echo "Creating VNET ---"
       az network vnet create -g $RG_NAME \
             --name $vnet \
@@ -112,7 +112,7 @@ else
       echo
       echo "Do you want to create subnets for $vnet: $address_prefix? (yes/no)"
       read -r answer
-      if [[ "$answer" == "yes" ]]; then
+      if [[ "$answer" == "y" ]]; then
          echo
          echo "Creating Subnets ---"
          for item in "${subnet_list[@]}"
@@ -180,7 +180,7 @@ echo
 echo "---------------------------------------------------"
 echo "Do you want to create VNET Peerings? (yes/no)"
 read -r answer
-   if [[ "$answer" == "yes" ]]; then
+   if [[ "$answer" == "y" ]]; then
       echo "Creating VNET Peering using IDs"
       echo
       az network vnet peering create -g $RG_NAME \
