@@ -8,7 +8,7 @@ metadata:
 spec:
   containers:
   - name: app
-    image: <image-name>:<tag>
+    image: docker.io/library/my-app:v1.0
     env:
       - name: DBHOST
         value: <dbhost-ip>

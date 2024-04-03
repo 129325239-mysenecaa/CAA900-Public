@@ -4,27 +4,27 @@ metadata:
   name: db-deployment
   namespace: db
   labels:
-    app: mysql
+    appdb: mysql
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      app: mysql
+      appdb: mysql
   template:
     metadata:
       labels:
-        app: mysql
+        appdb: mysql
     spec:
       containers:
       - name: db-deployment
-        image: <image-name>:<tag>
+        image: docker.io/library/my-db:v1.0
         env:
-          - name: MYSQL_ROOT_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: mysql-credentials
-                key: password
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-credentials
+              key: password
         ports:
-          - containerPort: 3306
+        - containerPort: 3306
       dnsPolicy: ClusterFirst
       restartPolicy: Always

@@ -4,20 +4,20 @@ metadata:
   name: mysql-replicaset
   namespace: db
   labels:
-    app: mysql
+    appdb: mysql
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: mysql
+      appdb: mysql
   template:
     metadata:
       labels:
-        app: mysql
+        appdb: mysql
     spec:
       containers:
       - name: mysql
-        image: <image-name>:<tag>
+        image: docker.io/library/my-db:v1.0
         env:
           - name: MYSQL_ROOT_PASSWORD
             valueFrom:

@@ -5,7 +5,7 @@ metadata:
   namespace: db
 spec:
   selector:
-    app: mysql
+    appdb: mysql
   ports:
     - protocol: TCP
       port: 3306
