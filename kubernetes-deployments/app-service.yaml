@@ -3,9 +3,12 @@ kind: Service
 metadata:
   name: app-service
   namespace: app
+  labels:
+    app: employee
 spec:
   selector:
-    app: employee
+    matchLabels:
+      app: employee
   type: NodePort
   ports:
     - protocol: TCP
