@@ -3,13 +3,8 @@ kind: Deployment
 metadata:
   name: db-deployment
   namespace: db
-  labels:
-    appdb: mysql
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      appdb: mysql
   template:
     metadata:
       labels:
