@@ -3,12 +3,9 @@ kind: Service
 metadata:
   name: db-service
   namespace: db
-  labels:
-    appdb: mysql
 spec:
   selector:
-    matchLabels:
-      appdb: mysql
+    appdb: mysql
   ports:
     - protocol: TCP
       port: 3306
