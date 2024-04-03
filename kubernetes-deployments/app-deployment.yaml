@@ -20,7 +20,7 @@ spec:
         image: <image-name>:<tag>
         env:
         - name: DBHOST
-          value: <dbhost-name>
+          value: <dbhost-ip>
         - name: DBPORT
           value: "3306"
         - name: DATABASE
