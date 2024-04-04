@@ -6,9 +6,6 @@ metadata:
   labels:
     appdb: mysql
 spec:  
-  selector:
-    matchLabels:
-      appdb: mysql
   containers:
   - name: db
     image: docker.io/library/my-db:v1.0
