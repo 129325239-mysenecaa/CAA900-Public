@@ -4,7 +4,7 @@ metadata:
   name: mysql
   namespace: db
   labels:
-    manifestType: pod
+    appdb: mysql
 spec:  
   selector:
     matchLabels:
