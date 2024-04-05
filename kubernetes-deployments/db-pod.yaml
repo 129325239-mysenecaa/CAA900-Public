@@ -8,7 +8,7 @@ metadata:
 spec:  
   containers:
   - name: db
-    image: docker.io/library/my-db:v1.0
+    image: docker.io/library/mysql:latest
     resources:
       requests:
         memory: "64Mi"
@@ -25,17 +25,19 @@ spec:
     ports:
     - containerPort: 3306
     volumeMounts:
-      - name: config-vol
-        mountPath: /var/lib/mysql
-  dnsPolicy: ClusterFirst
-  restartPolicy: Always
-  volumes:
-    - name: config-vol
-      configMap:
-        name: mysql-config
-  
+      - name: mysql-initdb
+        mountPath: /docker-entrypoint-initdb.d
+      - mountPath: "/var/lib/mysql"
+        subPath: "mysql"
+        name: mysql-data
+    volumes:
+      - name: mysql-initdb
+        configMap:
+          name: mysql-initdb-config
+      - name: mysql-data
+        persistentVolumeClaim:
+          claimName: mysql-data-disk
 ---
-
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -55,3 +57,14 @@ data:
     INSERT INTO employee VALUES ('1','Amanda','Williams','Smile','local');
     INSERT INTO employee VALUES ('2','Alan','Williams','Empathy','alien');
     SELECT * FROM employee;
+--
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-data-disk
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
