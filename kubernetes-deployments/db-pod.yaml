@@ -30,11 +30,12 @@ spec:
       - mountPath: "/var/lib/mysql"
         subPath: "mysql"
         name: mysql-data
-    volumes:
-      - name: mysql-initdb
-        configMap:
-          name: mysql-initdb-config
-      - name: mysql-data
-        persistentVolumeClaim:
-          claimName: mysql-data-disk
-
+  volumes:
+    - name: mysql-initdb
+      configMap:
+        name: mysql-initdb-config
+    - name: mysql-data
+      persistentVolumeClaim:
+        claimName: mysql-data-disk
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
