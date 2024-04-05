@@ -9,13 +9,6 @@ spec:
   containers:
   - name: db
     image: docker.io/library/mysql:latest
-    resources:
-      requests:
-        memory: "64Mi"
-        cpu: "250m"
-      limits:
-        memory: "128Mi"
-        cpu: "500m"
     env:
     - name: MYSQL_ROOT_PASSWORD
       valueFrom:
