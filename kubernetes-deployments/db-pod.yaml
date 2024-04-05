@@ -13,18 +13,20 @@ spec:
       - name: MYSQL_ROOT_PASSWORD
         valueFrom:
           secretKeyRef:
-          name: mysql-credentials
-          key: password
+            name: mysql-credentials
+            key: password
       - name: MYSQL_DATABASE
         value: employees
       - name: MYSQL_USER
-          name: mysql-credentials
-          key: user
+        valueFrom:
+          secretKeyRef:
+            name: mysql-credentials
+            key: user
       - name: MYSQL_PASSWORD
         valueFrom:
           secretKeyRef:
-          name: mysql-credentials
-          key: password
+            name: mysql-credentials
+            key: password
         livenessProbe:
           exec:
             command: ["mysqladmin", "ping"]
