@@ -4,8 +4,8 @@
 
 # Client VM Credentials
 
-USER_NAME=""
-ADMIN_PW=""
+USER_NAME="atoosanasiri"
+ADMIN_PW="@atoosanasiri123"
 
 RG_NAME=""     # your student group
 LOCATION=""    # your location
@@ -14,6 +14,14 @@ ID=""          #unique ID assigned to you
 Student_vnet_name=""
 Student_vnet_address=""
 Client_Subnet_name=""
+
+RG_NAME="Student-RG-1202761"     # your student group
+LOCATION="canadacentral"    # your location
+ID="99"          #unique ID assigned to you
+
+Student_vnet_name="Student-1202761-vnet"
+Student_vnet_address="10.19.119.0/24"
+Client_Subnet_name="Virtual-Desktop-Client"
 
 # ---------------------------------------------------
 # Networking - Virtual Networks
