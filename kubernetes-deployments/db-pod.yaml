@@ -15,8 +15,6 @@ spec:
           secretKeyRef:
             name: mysql-credentials
             key: password
-      - name: MYSQL_DATABASE
-        value: employees
       - name: MYSQL_USER
         valueFrom:
           secretKeyRef:
@@ -27,16 +25,6 @@ spec:
           secretKeyRef:
             name: mysql-credentials
             key: password
-        # livenessProbe:
-        #   exec:
-        #     command: ["mysqladmin", "ping"]
-        #   initialDelaySeconds: 30
-        #   periodSeconds: 10
-        #   timeoutSeconds: 5
-        # readinessProbe:
-        #   exec:
-        #     # Check we can execute queries over TCP (skip-networking is off).
-        #     command: ["mysql", "-h", "127.0.0.1", "-e", "SELECT 1"]
     ports:
     - containerPort: 3306
     volumeMounts:
