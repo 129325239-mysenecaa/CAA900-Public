@@ -10,18 +10,31 @@ spec:
   - name: db
     image: docker.io/library/mysql:latest
     env:
-    - name: MYSQL_ROOT_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: mysql-credentials
-          key: password
+      - name: MYSQL_ROOT_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: mysql-pass
+            key: password
+      - name: MYSQL_DATABASE
+        value: employees
+      - name: MYSQL_USER
+        value: atoosa
+      - name: MYSQL_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: mysql-pass
+            key: password
+    # - name: MYSQL_ROOT_PASSWORD
+    #   valueFrom:
+    #     secretKeyRef:
+    #       name: mysql-credentials
+    #       key: password
     ports:
     - containerPort: 3306
     volumeMounts:
       - name: mysql-initdb
         mountPath: /docker-entrypoint-initdb.d
       - mountPath: "/var/lib/mysql"
-        subPath: "mysql"
         name: mysql-data
   volumes:
     - name: mysql-initdb
