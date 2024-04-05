@@ -7,9 +7,6 @@ metadata:
     manifestType: pod
     app: employee
 spec:
-  selector:
-    matchLabels:
-      app: employee
   containers:
   - name: app
     image: docker.io/library/my-app:v1.0
